@@ -1,0 +1,41 @@
+NVIDIA在可观测领域的布局主要围绕其GPU加速计算生态系统，尤其在AI、HPC和数据中心领域，提供从芯片到应用的全栈洞察。
+
+**1. 硬件级可观测性 (GPU, DPU, 网络):**  
+* **GPU 遥测:**  
+* 通过 **NVML (NVIDIA Management Library)** 访问。  
+* 监控指标：SM利用率、内存带宽、功耗、温度、时钟频率、ECC错误等。  
+* **NVIDIA BlueField® DPU (Data Processing Unit):**  
+* 卸载、加速和隔离数据中心基础设施服务。  
+* 提供网络、存储、安全遥测数据，通过 **DOCA™ (Data Center-on-a-Chip Architecture)** 框架管理。  
+* **NVIDIA Networking (原Mellanox):**  
+* Spectrum™ 以太网交换机、ConnectX® 网卡。  
+* 高级网络遥测：WJH (What Just Happened)、流量计数器、拥塞控制监控。
+
+**2. 软件开发套件 (SDK) 与工具链:**  
+* **NVIDIA Nsight™ Suite:**  
+* **Nsight™ Systems:** 系统级性能分析，识别CPU/GPU/OS交互瓶颈。  
+* **Nsight™ Compute:** CUDA Kernel级性能分析与优化。  
+* **Nsight™ Graphics:** 图形应用调试与性能分析。  
+* **CUDA® Profiling Tools Interface (CUPTI):** API接口，允许开发者构建自定义CUDA应用分析工具。  
+* **NVIDIA Triton™ Inference Server:** 提供推理服务的性能指标 (吞吐量、延迟、GPU利用率)，与Prometheus等集成。  
+* **NVIDIA TensorRT™:** 优化后的推理引擎，可与Nsight工具配合分析。
+
+**3. 系统与集群级管理与监控:**  
+* **NVIDIA Data Center GPU Manager (DCGM):** 集群级GPU健康监控、诊断、策略管理。通过 **DCGM Exporter** 与Prometheus集成，提供Grafana仪表盘。  
+* **NVIDIA AI Enterprise:** 企业级AI软件套件，包含监控和管理工具。  
+* **NVIDIA Base Command™ Platform & Fleet Command™:** AI开发和边缘部署管理平台，内置监控。  
+* **Kubernetes 集成:** NVIDIA GPU Operator, Device Plugin，支持在K8s中监控GPU资源。
+
+**4. 开放生态与集成:**  
+* **Prometheus & Grafana:** 主要通过DCGM Exporter接入NVIDIA平台指标。  
+* **与调度器集成:** 如Slurm, LSF等HPC调度器，获取GPU状态和利用率。  
+* **支持行业标准:** 如Redfish API。
+
+**5. 面向关键应用场景的解决方案:**  
+* **AI 训练与推理:** Nsight, TensorRT, Triton, DCGM协同优化。  
+* **HPC (高性能计算):** Nsight Systems/Compute, DCGM助力性能突破。  
+* **数据中心运维:** DCGM, BlueField DPU, NVIDIA Networking遥测提升效率。  
+* **边缘计算 (Edge AI):** Fleet Command等提供方案。  
+* **Omniverse™ / 数字孪生:** 平台内置性能监控。
+
+**总结NVIDIA的布局：** 以GPU为核心，提供从硬件、驱动、SDK到应用框架和服务平台的全栈覆盖，并积极拥抱开源标准，简化与主流可观测性工具的集成。
