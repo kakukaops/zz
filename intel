@@ -1,0 +1,61 @@
+Intel在可观测性（Observability）领域的技术布局是多层次、软硬协同的，旨在为其硬件平台（CPU、GPU、FPGA、网络设备、AI加速器等）和软件栈（oneAPI、各种库和工具）提供全面的洞察能力，从而帮助开发者和运维人员优化性能、诊断问题、提高系统可靠性和效率。
+
+其技术布局可以概括为以下几个关键方面：
+
+1. **硬件层面的可观测性（Hardware-Level Observability）：**
+    
+    - **性能监控单元（PMUs - Performance Monitoring Units）：** Intel CPU 内部集成了强大的 PMU，可以收集大量低级别的硬件事件，如指令周期、缓存命中/未命中、分支预测、内存带宽等。这是性能分析和瓶颈定位的基础。
+        
+    - **非核心（Uncore）监控：** 除了 CPU 核心，Intel 也提供了对非核心组件（如内存控制器、QPI/UPI 链路、PCIe 控制器）的监控能力，这对于理解整个系统的性能至关重要。
+        
+    - **平台遥测（Platform Telemetry）：** 通过各种传感器和接口收集关于功耗、温度、电压等平台级别的数据，用于功耗管理、散热优化和预测性维护。
+        
+    - **网络遥测：** Intel 的网络接口卡（NICs）和交换机芯片（如 Tofino）支持高级遥测功能，如 In-band Network Telemetry (INT)，允许在数据包层面收集路径和延迟信息，对于网络性能监控和故障排除非常重要。
+        
+    - **AI 加速器遥测：** 对于 Gaudi 等 AI 加速器，Intel 提供专门的工具和接口来监控其计算单元利用率、内存带宽、功耗和温度等，以优化 AI 训练和推理工作负载。
+        
+2. **软件和工具层面的可观测性（Software and Tooling for Observability）：**
+    
+    - **Intel VTune Profiler：** 旗舰级的性能分析工具，能够利用硬件 PMU 数据，提供热点分析、微架构分析、线程分析、I/O 分析等，帮助开发者深入理解应用在 Intel 平台上的行为。
+        
+    - **oneAPI：**
+        
+        - **Level Zero API：** oneAPI 的底层硬件接口，允许直接访问硬件特性，包括查询和配置性能计数器、收集遥测数据等。
+            
+        - **oneAPI 分析工具集：** 包括 VTune Profiler、Advisor (用于代码优化建议)、Inspector (用于内存和线程错误检测)，这些工具共同构成了强大的可观测性套件。
+            
+    - **Intel Telemetry Collector / Aggregator：** 软件组件用于收集、聚合来自不同硬件源的遥测数据，并可能提供 API 供上层应用或监控系统使用。
+        
+    - **针对特定工作负载的工具：** 例如，OpenVINO™ Toolkit 包含用于分析和优化 AI 推理工作负载性能的工具。
+        
+3. **开源社区和标准化的参与（Engagement in Open Source and Standardization）：**
+    
+    - **OpenTelemetry (OTel)：** Intel 积极参与 OpenTelemetry 项目，致力于将 Intel 硬件遥测数据（如 PMU 事件）集成到 OpenTelemetry 生态中。这使得开发者可以使用标准化的方式收集、处理和导出遥测数据（Metrics, Traces, Logs），并与主流的可观测性后端（如 Prometheus, Grafana, Jaeger）集成。
+        
+    - **eBPF（Extended Berkeley Packet Filter）：** Intel 在 Linux 内核和 eBPF 技术方面有贡献。eBPF 提供了在内核空间安全高效地运行自定义代码的能力，非常适合用于系统级和网络级的可观测性，例如捕获细粒度的系统事件、网络流量分析等。Intel 的硬件特性可以与 eBPF 程序结合，提供更深入的洞察。
+        
+    - **对 Prometheus、Grafana 等生态的贡献：** 可能包括提供针对 Intel 硬件的 Exporter 或 Grafana 插件，方便用户在这些流行的监控平台中展示和分析 Intel 平台的数据。
+        
+4. **面向特定场景和解决方案的可观测性：**
+    
+    - **数据中心和云计算：** 为大规模部署的服务器提供可观测性，帮助云服务提供商和企业优化资源利用率、降低 TCO。
+        
+    - **边缘计算：** 针对资源受限的边缘设备，提供轻量级的可观测性方案，用于监控边缘应用的性能和健康状况。
+        
+    - **AI/MLOps：** 为 AI 训练和推理流水线提供可观测性，监控模型性能、资源消耗、数据漂移等。
+        
+5. **生态系统合作：**
+    
+    - 与操作系统供应商（如 Red Hat, SUSE, Microsoft）、云服务提供商（AWS, Azure, GCP）以及可观测性解决方案提供商（Datadog, Dynatrace, Splunk 等）合作，确保 Intel 平台的可观测性能力能够被广泛集成和利用。
+        
+
+**总结来说，Intel 在可观测领域的布局是“由内而外”的：**
+
+- **内（硬件核心）：** 深度挖掘和暴露硬件层面的遥测数据。
+    
+- **中（软件栈）：** 提供强大的分析工具和 API（如 VTune, oneAPI）来利用这些数据。
+    
+- **外（生态系统）：** 积极拥抱和贡献开源标准（如 OpenTelemetry, eBPF），与合作伙伴共同构建完整的可观测性解决方案。
+    
+
+这种布局的目标是赋能开发者和运维人员，使他们能够充分理解和优化运行在 Intel 平台上的各种工作负载，最终提升用户体验和系统效率。
