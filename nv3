@@ -1,0 +1,45 @@
+NVIDIA 在为其 GPU 和相关平台（如数据中心、AI 工作负载、HPC）的可观测性方面投入了大量资源，以帮助开发者、系统管理员和研究人员监控、分析和优化其应用程序和基础设施的性能、健康状况和资源利用率。
+以下是 NVIDIA 在可观测性方面所做的一些主要工作和开发的相关产品/技术：
+硬件级特性与遥测 (Hardware-Level Features & Telemetry):
+GPU 性能计数器 (Performance Counters): NVIDIA GPU 内部集成了大量的硬件性能计数器，可以追踪各种指标，如 SM (Streaming Multiprocessor) 占用率、内存带宽利用率、L1/L2 缓存命中/未命中、Tensor Core 使用率、指令执行类型等。这些是底层性能分析的基础。
+功耗和温度传感器 (Power and Thermal Sensors): GPU 内置传感器，用于实时监控功耗和温度，这对于性能调优、功耗管理和系统健康至关重要。
+NVLink/NVSwitch 遥测: 对于多 GPU 系统，NVLink 和 NVSwitch 提供高速互连，NVIDIA 也提供了监控这些互连链路带宽、错误和状态的机制。
+ECC 内存错误报告: 许多专业级和数据中心 GPU 支持 ECC 内存，并能报告可纠正和不可纠正的内存错误，这对于系统可靠性至关重要。
+核心软件工具和 SDK (Core Software Tools & SDKs):
+NVIDIA Nsight™ Suite: 这是 NVIDIA 的旗舰级开发者工具套件，包含多个用于分析和调试的工具：
+Nsight Systems: 系统级性能分析工具，用于可视化和理解应用程序在 CPU 和 GPU 上的交互和瓶颈。它可以展示 CUDA API 调用、内核执行、内存传输、GPU/CPU 活动时间线、OS 事件等，帮助定位系统级瓶颈。
+Nsight Compute: 针对 CUDA 内核的深度性能分析器和调试器。它利用硬件性能计数器提供非常详细的内核执行信息，帮助开发者优化单个 CUDA Kernel 的性能，例如分析指令流水线、内存访问模式、占用率等。
+Nsight Graphics: 针对图形应用程序的调试和性能分析工具，支持 DirectX、Vulkan、OpenGL。
+Nsight Deep Learning Designer (已较少独立提及，功能融入其他工具或由框架层提供支持): 早期用于设计和调试深度学习网络。
+NVIDIA Management Library (NVML):
+一个 C 语言库，提供了一个编程接口来监控和管理 NVIDIA GPU 设备。它是许多 NVIDIA 工具（如 nvidia-smi 和 DCGM）的基础。
+通过 NVML，开发者可以查询 GPU 的各种状态信息，如利用率、内存使用、温度、功耗、时钟频率、ECC 错误、驱动版本、PState（性能状态）等。
+nvidia-smi (NVIDIA System Management Interface):
+基于 NVML 的命令行工具，用于监控和管理 NVIDIA GPU 设备。这是管理员和开发者最常用的快速检查 GPU 状态和基本性能指标的工具。
+可以报告 GPU 利用率、内存使用、温度、功耗、运行的进程等。
+CUDA Toolkit:
+虽然主要是开发平台，但也包含调试器（如 cuda-gdb）和早期的 Profiler（现已被 Nsight 系列取代）。CUDA API 本身也提供了一些查询设备属性和同步的功能，这对于基本的程序状态观测是必要的。
+数据中心和集群级监控 (Data Center & Cluster-Level Monitoring):
+NVIDIA Data Center GPU Manager (DCGM):
+一套全面的工具，用于在集群环境中管理和监控 NVIDIA GPU。它专为数据中心设计。
+功能包括：GPU 健康状况监控（主动健康检查）、诊断、系统验证、策略管理（如功耗限制）、资源配置和 GPU 指标收集。
+DCGM Exporter: 将 DCGM 收集的 GPU 指标以 Prometheus 格式暴露出来，方便集成到 Prometheus/Grafana 等流行的监控和可视化系统中。
+支持与 Kubernetes、Slurm 等集群管理器的集成。
+NVIDIA Fleet Command™:
+用于大规模部署和管理边缘 AI 应用的平台。其核心功能之一就是远程监控和管理部署在边缘的 NVIDIA认证系统及其 GPU 的健康状况和性能。
+NVIDIA Base Command™ Platform:
+一个用于端到端 AI 开发和运营的平台，集成了资源管理、作业调度和监控功能，允许用户跟踪其 AI 训练和推理工作负载的性能和资源使用情况。
+网络可观测性 (Networking Observability - 尤其在收购 Mellanox 后):
+NVIDIA Networking (前 Mellanox) 提供了一系列用于监控其 InfiniBand 和 Ethernet 网络适配器、交换机和网关的工具。
+Unified Fabric Manager (UFM®) Platform:
+UFM Telemetry: 实时监控网络性能和状况，收集细粒度的遥测数据，用于拥塞控制、故障排除和性能优化。
+UFM Cyber-AI: 利用收集到的网络遥测数据进行异常检测和安全分析。
+ibdiagnet、ibstat 等传统 InfiniBand 诊断和状态工具。
+AI 和特定应用 SDK 的可观测性:
+NVIDIA Triton™ Inference Server: 提供详细的日志记录和指标（可导出到 Prometheus），用于监控推理请求的吞吐量、延迟、GPU 利用率、内存使用等。
+许多 NVIDIA SDK（如 Riva 用于语音 AI，Maxine 用于音视频）在设计时会考虑性能，并鼓励用户使用 Nsight 等工具进行分析。
+与生态系统集成:
+通过 DCGM Exporter 等工具，NVIDIA 积极推动其 GPU 指标集成到行业标准的监控解决方案中（如 Prometheus, Grafana）。
+为 Kubernetes 提供 GPU Operator 和 Device Plugin，使 Kubernetes 能够感知和调度 GPU 资源，并暴露 GPU 指标。
+与云服务提供商 (AWS, Azure, GCP) 合作，确保其 GPU 在云环境中的可观测性。
+总结来说，NVIDIA 通过提供从硬件传感器到高级软件分析工具和数据中心管理套件的完整堆栈，为其产品提供了强大的可观测性。这使得用户能够深入了解其 GPU 加速系统的行为，从而进行有效的性能优化、故障排除、资源管理和容量规划，尤其是在大规模 AI 和 HPC 部署中。
