@@ -1,0 +1,18 @@
+envs_dirs:
+- D:\Program\miniconda3\envs
+
+pkgs_dirs:
+- D:\Program\miniconda3\pkgs
+
+channels:
+  - nvidia
+  - pytorch
+  - pytorch-lts
+  - defaults
+show_channel_urls: true
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+custom_channels:
+  nvidia: https://mirrors.sustech.edu.cn/anaconda-extra/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
