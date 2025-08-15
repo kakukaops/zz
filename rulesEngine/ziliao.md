@@ -9,3 +9,5 @@ https://zhuanlan.zhihu.com/p/158794283   StackStorm: 什么是 StackStorm ?
 https://www.oomkill.com/stackstorm-rules/     StackStorm自动化 - Rules
 
 https://tech.youzan.com/rules-engine/   有赞风控规则引擎实践
+
+https://liteflow.cc/   轻量，快速，稳定可编排的组件式规则引擎
