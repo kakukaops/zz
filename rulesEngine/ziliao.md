@@ -24,3 +24,5 @@ https://www.liaojiayi.com/deep-dive-cep/    规则引擎和 Flink CEP
 
 https://geek.zshipu.com/post/bi/flink/Flink%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E%E5%AE%9E%E8%B7%B5/    Flink规则引擎实战
 
+https://zhuanlan.zhihu.com/p/706340840   jvs-rules规则引擎
+
