@@ -20,3 +20,5 @@ https://gitee.com/ByteDance/arishem   字节跳动客服平台架构组自研的
 
 https://tech.qimao.com/flink-gui-ze-yin-qing-ji-zhu-fang-an-she-ji/   flink 规则引擎技术实现
 
+https://www.liaojiayi.com/deep-dive-cep/    规则引擎和 Flink CEP
+
