@@ -26,3 +26,5 @@ https://geek.zshipu.com/post/bi/flink/Flink%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E%
 
 https://zhuanlan.zhihu.com/p/706340840   jvs-rules规则引擎
 
+https://zhuanlan.zhihu.com/p/663373294   IBM Ilog规则引擎
+
